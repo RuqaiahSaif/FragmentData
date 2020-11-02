@@ -15,13 +15,13 @@ class Fragment_1 : Fragment() {
 
     private lateinit var text: TextView
     private lateinit var button1: Button
+    private var name: String? = null
 
 
 
-   // var name: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-  // name = arguments?.getSerializable("Name") as String
+
 
     }
 
@@ -31,17 +31,17 @@ class Fragment_1 : Fragment() {
     ): View? {
 
         val view=inflater.inflate(R.layout.fragment_1, container, false)
-//        text = view?.findViewById(R.id.text) as TextView
         button1 = view?.findViewById(R.id.button1) as Button
-       // text.setText( mycolor)
-        button1.setOnClickListener {
-            callbacks?.send("name")
-        }
-
-
 
 
         return view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        button1.setOnClickListener {
+            callbacks?.send("my name is roqia")
+        }
     }
     interface Callbacks{
         fun send(name:String)
